@@ -4,7 +4,7 @@ import { colors } from "../../../utils/colors";
 
 export const styles = StyleSheet.create({
     container: {
-        padding: 24
+        padding: 24,
     },
     agreeRow: {
         flexDirection: 'row',
@@ -27,6 +27,7 @@ export const styles = StyleSheet.create({
         textAlign: 'center'
     },
     footerLink: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginBottom: 56
     }
 })
