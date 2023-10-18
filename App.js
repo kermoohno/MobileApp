@@ -19,6 +19,7 @@ import { colors } from './src/utils/colors';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import Config from "react-native-config";
+import ProductDetails from './src/screens/ProductDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -88,6 +89,7 @@ const isSignedIn = true;
           isSignedIn ? (
             <>
               <Stack.Screen name = "Tabs" component={Tabs} options={{headerShown: false}}/>
+              <Stack.Screen name="ProductDetails" component={ProductDetails} options={{headerShown: false}}/>
             </>
           ) : (
           <>
