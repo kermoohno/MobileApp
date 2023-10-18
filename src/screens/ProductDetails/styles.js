@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
         borderTopLeftRadius: 16,
         borderTopRightRadius: 16,
         marginTop: -40,
-        paddingHorizontal: 24
+        paddingHorizontal: 24,
     },
     title: {
         marginTop: 40,
@@ -34,6 +34,7 @@ export const styles = StyleSheet.create({
         padding: 24,
         flexDirection: 'row',
         alignItems: 'center',
+        marginRight: 75
     },
     save: {
         flex: 1
