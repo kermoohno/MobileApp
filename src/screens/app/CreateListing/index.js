@@ -7,6 +7,7 @@ import { styles } from './styles';
 import { launchCamera, launchImageLibrary } from "react-native-image-picker";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
+import categories from "../../../data/categories";
 
 const CreateListing = ({ navigation }) => {
     const[images, setImages] = useState([])
@@ -61,7 +62,7 @@ const CreateListing = ({ navigation }) => {
                 {loading ? (<ActivityIndicator/>) : null}
                 </View>
                 <Input label="Title" placeholder="Listing Title" value={values.title} onChangeText={(v) => onChange(v, 'title')}/>
-                <Input label="Category" placeholder="Select the category"/>
+                <Input label="Category" placeholder="Select the category" value={values.category} onChangeText={(v) => onChange(v, 'category')} type="picker" options={categories}/>
                 <Input label="Price" placeholder="Enter the price in USD" value={values.price} onChangeText={(v) => onChange(v, 'price')} keyboardType="numeric"/>
                 <Input style={styles.textarea} label="Description" placeholder="Tell us more..." value={values.description} onChangeText={(v) => onChange(v, 'description')} multiline/>
                 <Button title="Submit"/>
