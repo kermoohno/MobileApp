@@ -1,5 +1,5 @@
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image } from 'react-native';
 
 import Splash from './src/screens/auth/splash';
@@ -26,6 +26,9 @@ const Tab = createBottomTabNavigator();
 
 import Config from "react-native-config";
 import ProductDetails from './src/screens/ProductDetails';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+export const UserContext = React.createContext()
 
 const ProfileStack = () => {
   return(
@@ -74,8 +77,15 @@ const Tabs = () => {
 }
 
 const App = () => {
+  const isSignedIn = true;
+  const [user, setUser] = useState()
 
-const isSignedIn = true;
+  useEffect(() => {
+    (async () => {
+      const accessToken = await AsyncStorage.getItem('auth_token')
+      setUser({ accessToken })
+    })()
+  }, [])
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -95,10 +105,11 @@ const isSignedIn = true;
 
   return(
     <SafeAreaProvider>
+      <UserContext.Provider value={{user, setUser}}>
     <NavigationContainer theme={theme}>
       <Stack.Navigator>
         {
-          isSignedIn ? (
+          user?.accessToken ? (
             <>
               <Stack.Screen name = "Tabs" component={Tabs} options={{headerShown: false}}/>
               <Stack.Screen name="ProductDetails" component={ProductDetails} options={{headerShown: false}}/>
@@ -113,6 +124,7 @@ const isSignedIn = true;
         }
       </Stack.Navigator>
     </NavigationContainer>
+    </UserContext.Provider>
     </SafeAreaProvider>
         
   );
