@@ -7,7 +7,7 @@ import { styles } from './styles';
 import { launchCamera, launchImageLibrary } from "react-native-image-picker";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
-import categories from "../../../data/categories";
+import {categories} from "../../../data/categories";
 
 const CreateListing = ({ navigation }) => {
     const[images, setImages] = useState([])
